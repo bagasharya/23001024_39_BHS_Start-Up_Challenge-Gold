@@ -13,20 +13,41 @@
     <title>Ottelo Petshop</title>
   </head>
   <body>
-    <!-- Logo Start -->
+    <!-- Product-page Start -->
     <div class="card text-center">
-      <div class="card-header text-start">Featured</div>
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <img class="card-logo" src="" alt="">
+        <h5 class="card-title">TOKO</h5>
+        <img class="card-logo" src="http://localhost:1997/assets/logoottelo.png" alt="logo Ottelo" />
         <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
+          Silahkan klik link dibawah ini untuk transaksi melalui Shopee
         </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <a href="https://shopee.co.id/ottelopetshop" class="btn btn-primary"
+          >Shopee</a
+        >
       </div>
-      <div class="card-footer text-body-secondary">2 days ago</div>
+      <div class="card-footer text-body-secondary">
+        Produk kami berserta review pelanggan
+      </div>
     </div>
-    <!-- Logo End -->
+
+    <!-- List Product Start -->
+    <% produk.forEach(pdk => { %>
+
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item">brand</li>
+      <li class="list-group-item">nama produk</li>
+      <li class="list-group-item">harga</li>
+    </ul>
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item"><%= pdk.brand %></li>
+      <li class="list-group-item"><%= pdk.namaProduk %></li>
+      <li class="list-group-item"><%= pdk.harga %></li>
+    </ul>
+    <% }) %>
+
+    <!-- List Product End -->
+
+    <!-- Product-page End -->
 
     <!-- bootstrap js -->
     <script
