@@ -17,10 +17,10 @@
     <!-- Navbar Start -->
     <nav>
       <div class="navbar navbar-expand-lg" style="background-color: #faf6f0">
-        <div class="col-8">
-          <a class="navbar-brand ms-2" href="#">
+        <div class="col-7">
+          <a class="navbar-brand ms-2" href="http://localhost:3000/dashboard">
             <img
-              src="assets/logottelo.png"
+              src="http://localhost:3000/assets/logottelo.png"
               alt="ottelopetshop"
               width="110"
               height="50"
@@ -42,27 +42,44 @@
           <div class="col-6">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="http://localhost:3000/dashboard"
+                  >Home</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="https://shopee.co.id/ottelopetshop"
+                  >Shopee</a
+                >
               </li>
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="#"
+                  href="http://localhost:3000/kontak"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown
+                  Kontak
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="http://localhost:3000/kontak"
+                      >Whatsapp</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="http://localhost:3000/kontak"
+                      >Alamat Toko</a
+                    >
+                  </li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="http://localhost:3000/kontak"
+                      >Shopee</a
+                    >
                   </li>
                 </ul>
               </li>
@@ -84,72 +101,63 @@
     </nav>
     <!-- Navbar End -->
 
-    <!-- Card Start -->
-    <div class="card-group justify-content-center text-center mt-4">
+    <!-- Form tambah produk Start -->
+    <div class="container mt-3">
       <div class="row">
-        <div class="col-sm-4 mb-3 mb-sm-0">
-          <div class="card" style="width: 20rem">
-            <img src="assets/dashfood.png" class="card-img-top" alt="makan" />
-            <div class="card-body">
-              <a href="#" id="cardTitle" class="btn fs-4 col-12">Makanan</a>
+        <div class="col-md-6">
+          <h2>Form Tambah Produk</h2>
+
+          <form method="post" action="/produk/makanan">
+            <div class="mb-3">
+              <label for="brand" class="form-label">Brand</label>
+              <input
+                type="text"
+                class="form-control"
+                id="brand"
+                name="brand"
+                placeholder="contoh: bolt"
+                required
+              />
             </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="card" style="width: 20rem">
-            <img src="assets/dashobat.png" class="card-img-top" alt="obat" />
-            <div class="card-body">
-              <a href="#" id="cardTitle" class="btn fs-4 col-12">Obat</a>
+            <div class="mb-3">
+              <label for="varian" class="form-label">Varian</label>
+              <input
+                type="text"
+                class="form-control"
+                id="varian"
+                name="varian"
+                placeholder="contoh: tuna"
+                required
+              />
             </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="card" style="width: 20rem">
-            <img src="assets/dashvit.png" class="card-img-top" alt="vitamin" />
-            <div class="card-body">
-              <a href="#" id="cardTitle" class="btn fs-4 col-12">Vitamin</a>
+            <div class="mb-3">
+              <label for="harga" class="form-label">Harga</label>
+              <input
+                type="text"
+                class="form-control"
+                id="harga"
+                name="harga"
+                placeholder="contoh: 12000"
+                required
+              />
             </div>
-          </div>
+            <div class="mb-3">
+              <label for="detail" class="form-label">Detail</label>
+              <input
+                type="text"
+                class="form-control"
+                id="detail"
+                name="detail"
+                placeholder="contoh: varian ini adalah varian paling disukai kucing"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
       </div>
     </div>
-    <div class="card-group justify-content-center text-center mt-4">
-      <div class="row">
-        <div class="col-sm-4 mb-3 mb-sm-0">
-          <div class="card" style="width: 20rem">
-            <img
-              src="assets/dashbath.png"
-              class="card-img-top"
-              alt="grooming"
-            />
-            <div class="card-body">
-              <a href="#" id="cardTitle" class="btn fs-4 col-12">Grooming</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="card" style="width: 20rem">
-            <img
-              src="assets/dashlitter.png"
-              class="card-img-top"
-              alt="litter"
-            />
-            <div class="card-body">
-              <a href="#" id="cardTitle" class="btn fs-4 col-12">Cat Litter</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="card" style="width: 20rem">
-            <img src="assets/dashacc.png" class="card-img-top" alt="vitamin" />
-            <div class="card-body">
-              <a href="#" id="cardTitle" class="btn fs-4 col-12">Aksesoris</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Card End -->
+    <!-- Form tambah produk End -->
 
     <!-- CDN JS -->
     <script
