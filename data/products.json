@@ -30,5 +30,11 @@
     "stok": 1,
     "harga": 34000,
     "detail": "Makanan kucing dengan varian rasa yang banyak membuat kucing tidak bosan"
+  },
+  {
+    "merk": "oricat",
+    "varian": "ikan",
+    "harga": "18500",
+    "detail": "produk dengan harga murah memiliki banyak varian"
   }
 ]

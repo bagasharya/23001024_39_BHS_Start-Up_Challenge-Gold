@@ -57,7 +57,7 @@
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
-                  href="http://localhost:3000/kontak"
+                  href="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -101,63 +101,49 @@
     </nav>
     <!-- Navbar End -->
 
-    <!-- Form tambah produk Start -->
-    <div class="container mt-3">
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Form Tambah Produk</h2>
+    <!-- List Makanan Start -->
 
-          <form method="post" action="/produk/makanan">
-            <div class="mb-3">
-              <label for="merk" class="form-label">merk</label>
-              <input
-                type="text"
-                class="form-control"
-                id="merk"
-                name="merk"
-                placeholder="contoh: bolt"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="varian" class="form-label">Varian</label>
-              <input
-                type="text"
-                class="form-control"
-                id="varian"
-                name="varian"
-                placeholder="contoh: tuna"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="harga" class="form-label">Harga</label>
-              <input
-                type="text"
-                class="form-control"
-                id="harga"
-                name="harga"
-                placeholder="contoh: 12000"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="detail" class="form-label">Detail</label>
-              <input
-                type="text"
-                class="form-control"
-                id="detail"
-                name="detail"
-                placeholder="contoh: varian ini adalah varian paling disukai kucing"
-                required
-              />
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+    <section id="list">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col">
+            <h2>Produk Makanan</h2>
+          </div>
+        </div>
+        <a href="/tambah/produk" class="btn btn-primary mb-2">tambah produk</a>
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Varian</th>
+                  <th scope="col">Harga</th>
+                  <th scope="col">Detail Produk</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% products.forEach(product => { %>
+                <tr>
+                  <td><%= product.merk %></td>
+                  <td><%= product.varian %></td>
+                  <td><%= product.harga %></td>
+                  <td>
+                    <a
+                      href="/produk/makanan/<%= product.merk %>"
+                      class="btn btn-success badge rounded-pill"
+                      >detail</a
+                    >
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Form tambah produk End -->
+    </section>
+    <!-- List Makanan End -->
 
     <!-- CDN JS -->
     <script
