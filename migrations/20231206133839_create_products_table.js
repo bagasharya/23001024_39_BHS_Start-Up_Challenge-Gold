@@ -5,9 +5,10 @@
 exports.up = function (knex) {
   return knex.schema.createTable('products', (table) => {
     table.bigIncrements('id', { primaryKey: true });
-    table.string('brand', 255).notNullable();
-    table.text('body').notNullable();
-    table.boolean('approve').notNullable().defaultTo(false);
+    table.string('merk', 100).notNullable();
+    table.string('varian', 100).notNullable();
+    table.string('harga', 100).notNullable();
+    table.string('desc', 100).notNullable();
   });
 };
 
