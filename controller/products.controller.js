@@ -1,14 +1,11 @@
 const { knex } = require('../dbConnection');
-const fs = require('fs');
 
 const listProducts = async (req, res) => {
   const products = await knex
     .table('products')
     .select(['merk', 'varian', 'harga', 'desc']);
 
-  res.json({
-    products: products,
-  });
+  res.render("produk-makanan", { products: products })
 };
 
 const addProduct = async (req, res) => {
