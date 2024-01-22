@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products Litter</title>
+    <!-- CDN CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body id="Home">
+
+    <!-- Navbar Start -->
+    <nav 
+    class="navbar navbar-expand-lg" style="background-color: #faf6f0">
+      <div class="container-fluid" style="font-size: larger">
+        <a class="navbar-brand ms-5" href="http://localhost:3000/dashboard">
+          <img
+            src="http://localhost:3000/assets/logottelo.png"
+            alt="ottelopetshop"
+            width="110"
+            height="50"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse me-2" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://localhost:3000/dashboard"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://shopee.co.id/ottelopetshop"
+                >Shopee</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://wa.me/+6281268794913">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- List Makanan Start -->
+    <section 
+    id="list">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col mt-4 mb-2">
+            <h3>Produk Litter</h3>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <table class="table table-hover border">
+              <thead>
+                <tr>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Varian</th>
+                  <th scope="col">Harga</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% products_litter.forEach(product => { %>
+                <tr>
+                  <td><%= product.merk %></td>
+                  <td><%= product.varian %></td>
+                  <td><%= product.harga %></td>
+                  <td>
+                    <a
+                      href="/products/litter/detail/<%= product.id %>"
+                      class="btn btn-success badge rounded-pill"
+                      >Detail</a
+                    >
+                  </td>
+                  <td>
+                    <!-- METOD DELETE PRODUCT START -->
+                    <form
+                      action="/products/litter/<%= product.id %>"
+                      method="post"
+                    >
+                      <input
+                        type="hidden"
+                        name="id"
+                        value="<%= product.id %>"
+                      />
+                      <button
+                        type="submit"
+                        class="btn btn-danger badge rounded-pill"
+                        onclick="return confirm('Yakin Dihapus?')"
+                      >
+                        delete
+                      </button>
+                    </form>
+                    <!-- METOD DELETE PRODUCT END -->
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+            <tr>
+              <!-- MODAL Tambah Produk Start -->
+              <div class="container text-center">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  data-bs-whatever="@mdo"
+                >
+                  Tambah Produk
+                </button>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Tambah Produk Baru
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body" style="text-align: left">
+                        <form method="post" action="/products/litter">
+                          <div class="mb-3">
+                            <label for="merk" class="form-label">Merk</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="merk"
+                              name="merk"
+                              placeholder="contoh: Cho Cho"
+                              required
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label for="varian" class="form-label"
+                              >Varian</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="varian"
+                              name="varian"
+                              placeholder="contoh: 3L"
+                              required
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label for="harga" class="form-label">Harga</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="harga"
+                              name="harga"
+                              placeholder="contoh: 10000"
+                              required
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label for="desc" class="form-label">Detail</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="desc"
+                              name="desc"
+                              placeholder="contoh: Pasir Gumpal"
+                              required
+                            />
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button type="submit" class="btn btn-primary" onclick="return alert('Berhasil Tambah Produk')">
+                              Submit
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- MODAL Tambah produk End -->
+            </tr>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- List Makanan End -->
+
+    <!-- CDN JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

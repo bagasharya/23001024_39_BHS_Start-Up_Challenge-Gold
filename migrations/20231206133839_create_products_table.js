@@ -9,6 +9,7 @@ exports.up = function (knex) {
     table.string('varian', 100).notNullable();
     table.string('harga', 100).notNullable();
     table.string('desc', 100).notNullable();
+
   });
 };
 

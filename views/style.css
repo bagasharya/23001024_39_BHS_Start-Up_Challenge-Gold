@@ -1,11 +1,5 @@
 
-
-#cardTitle {
-    font-family:'Times New Roman', Times, serif;
-    border-color: black;
-}
-
 #cardTitle:hover {
-  background-color: rgb(0, 162, 255);
-  border-style: none;
+    background-color: rgb(0, 153, 255);
+    color: white;
 }

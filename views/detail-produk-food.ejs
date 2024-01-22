@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Produk</title>
+    <!-- CDN CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body id="Home">
+
+    <!-- Navbar Start -->
+    <nav 
+    class="navbar navbar-expand-lg" style="background-color: #faf6f0">
+      <div class="container-fluid" style="font-size: larger">
+        <a class="navbar-brand ms-5" href="http://localhost:3000/dashboard">
+          <img
+            src="http://localhost:3000/assets/logottelo.png"
+            alt="ottelopetshop"
+            width="110"
+            height="50"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse me-2" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://localhost:3000/dashboard"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://shopee.co.id/ottelopetshop"
+                >Shopee</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://wa.me/+6281268794913">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Table Start -->
+    <div 
+    class="card-group justify-content-center text-center mt-4">
+      <div class="row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card" style="width: 20rem">
+            <div class="card-body">
+              <h1>Makanan</h1>
+              <% products_food.forEach(product => { %>
+              <ul class="list-group" style="text-align: start">
+                <li class="list-group-item">
+                  <b>Brand</b> : <%= product.merk %>
+                </li>
+                <li class="list-group-item">
+                  <b>Varian</b> : <%= product.varian %>
+                </li>
+                <li class="list-group-item">
+                  <b>Harga</b> : <%= product.harga %>
+                </li>
+                <li class="list-group-item">
+                  <b>Deskripsi</b> : <%= product.desc %>
+                </li>
+              </ul>
+              <!-- MODAL EDIT Produk Start -->
+              <div class="container text-center">
+                <button
+                  type="button"
+                  class="btn btn-warning badge rounded-pill mt-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  data-bs-whatever="@mdo"
+                >
+                  Edit
+                </button>
+
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Ubah Data Produk
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body" style="text-align: left">
+                        <form
+                          method="post"
+                          action="/products/food/detail/<%= product.id %>"
+                        >
+                          <div class="mb-3">
+                            <label for="merk" class="form-label">Merk</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="merk"
+                              name="merk"
+                              value="<%= product.merk %>"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label for="varian" class="form-label"
+                              >Varian</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="varian"
+                              name="varian"
+                              value="<%= product.varian %>"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label for="harga" class="form-label">Harga</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="harga"
+                              name="harga"
+                              value="<%= product.harga %>"
+                            />
+                          </div>
+                          <div class="mb-3">
+                            <label for="desc" class="form-label">Detail</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="desc"
+                              name="desc"
+                              value="<%= product.desc %>"
+                            />
+                          </div>
+                          <div class="modal-footer">
+                            <button
+                              type="button"
+                              class="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button type="submit" class="btn btn-primary" onclick="return alert('data berhasil diubah')">
+                              Submit
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- MODAL EDIT produk End -->
+              <a
+                style="margin-top: 10px"
+                href="http://localhost:3000/products/food"
+                class="btn btn-success badge rounded-pill"
+                >kembali</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+    <!-- Table End -->
+
+    <!-- CDN JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
